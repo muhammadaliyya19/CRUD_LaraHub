@@ -13,10 +13,9 @@ class QuestionController extends Controller
         return view('question.index', compact('questions'));
     }
 
-    public function addQuestion()
+    public function create()
     {
-        $questions = QuestionModel::getAll();
-        return view('question.addform', compact('questions'));
+        return view('question.addform');
     }
 
     public function store(Request $request)
@@ -25,5 +24,10 @@ class QuestionController extends Controller
         unset($data['_token']);
         // dd($data);
         $question = QuestionModel::save($data);
+        if ($question) {
+            return redirect('/pertanyaan');
+        } else {
+            return view('question.addform');
+        }
     }
 }

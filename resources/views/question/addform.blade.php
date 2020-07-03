@@ -6,7 +6,7 @@ $now = new DateTime();
 @section('content')
 <div class="card">
     <div class="card-body">
-        <form action="{{url('/question/create')}}" method="post">
+        <form action="{{url('/pertanyaan/create')}}" method="post">
             @csrf
             <input type="hidden" name="tanggal_dibuat" value="<?php echo $now->format('Y-m-d H:i:s'); ?>">
             <input type="hidden" name="tanggal_diperbarui" value="<?php echo $now->format('Y-m-d H:i:s'); ?>">

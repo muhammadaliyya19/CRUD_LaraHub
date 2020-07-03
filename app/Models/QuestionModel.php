@@ -15,7 +15,6 @@ class QuestionModel
     public static function save($question)
     {
         $new_question = DB::table('questions')->insert($question);
-        echo "SAMPAI MODEL CUK !";
-        return $new_question;
+        return 1;
     }
 }
