@@ -3,7 +3,7 @@
 @include('templates.partials.sidebar')
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper p-2">
     @yield('content')
 </div>
 <!-- /.content-wrapper -->

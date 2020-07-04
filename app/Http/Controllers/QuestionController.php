@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\QuestionModel;
+use Symfony\Component\Console\Question\Question;
 
 class QuestionController extends Controller
 {
@@ -29,5 +30,29 @@ class QuestionController extends Controller
         } else {
             return view('question.addform');
         }
+    }
+
+    public function show($id)
+    {
+        $question = QuestionModel::getById($id);
+        return view('question.show', compact('question'));
+    }
+
+    public function edit($id)
+    {
+        $question = QuestionModel::getById($id);
+        return view('question.edit', compact('question'));
+    }
+
+    public function update($id, Request $request)
+    {
+        $question = QuestionModel::update($id, $request->all());
+        return redirect('/pertanyaan');
+    }
+
+    public function destroy($id)
+    {
+        $delete = QuestionModel::destroy($id);
+        return redirect('/pertanyaan');
     }
 }

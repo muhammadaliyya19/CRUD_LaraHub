@@ -1,9 +1,9 @@
 @extends('templates/master')
 @section('content')
-<div class="row m-3">
+<div class="row m-2">
     <h1>All Question</h1>
 </div>
-<div class="card m-3">
+<div class="card m-2">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -24,8 +24,15 @@
                 <td>{{$q->isi}}</td>
                 <td>{{$q->tanggal_dibuat}}</td>
                 <td>{{$q->tanggal_diperbarui}}</td>
-                <td class="text-center"><a href="#"><i class="fas fa-eye mr-1"></i></a></td>
-                <td class="text-center"><a href="#"><i class="fas fa-edit mr-1"></i></a> <a href="#" class="ml-2"><i class="fas fa-trash mr-1"></i></a></td>
+                <td class="text-center"><a href="{{url('/pertanyaan/'.$q->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a></td>
+                <td class="text-center">
+                    <a href="{{url('/pertanyaan/'.$q->id.'/edit')}}" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
+                    <form action="/pertanyaan/{{$q->id}}" method="post" style="display: inline;">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>
